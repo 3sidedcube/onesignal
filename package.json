@@ -1,5 +1,5 @@
 {
-    "name": "@chelseaapps/onesignal",
+    "name": "@chelsea-apps/onesignal",
     "version": "1.0.0",
     "description": "Onesignal for Chelsea Apps NestJS packages",
     "main": "dist/index",
