@@ -10,13 +10,11 @@
         "prepare": "npm run build",
         "test": "echo \"Error: no test specified\" && exit 1",
         "format": "prettier --write \"src/**/*.ts\"",
-        "lint": "eslint \"src/**/*.ts\" --fix"
+        "lint": "eslint \"src/**/*.ts\" --fix",
+        "release": "standard-version --no-verify"
     },
     "author": "Chelsea Apps",
     "license": "ISC",
-    "publishConfig": {
-        "registry": "http://registry.chelsea-apps.com:4873"
-    },
     "dependencies": {
         "@nestjsplus/dyn-schematics": "^1.0.12"
     },
