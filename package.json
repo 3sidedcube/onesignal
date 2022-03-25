@@ -1,7 +1,7 @@
 {
-    "name": "@chelseaapps/template",
+    "name": "@chelseaapps/onesignal",
     "version": "1.0.0",
-    "description": "Template for Chelsea Apps NestJS packages",
+    "description": "Onesignal for Chelsea Apps NestJS packages",
     "main": "dist/index",
     "types": "dist/index",
     "scripts": {

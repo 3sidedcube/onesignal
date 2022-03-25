@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface TemplateOptions {
+export interface OnesignalOptions {
     //
     // This interface describes the options you want to pass to
-    // TemplateModule.
+    // OnesignalModule.
     //
     // For example, if you are wrapping a database library like MassiveJS,
     // this interface would probably contain properties like:
