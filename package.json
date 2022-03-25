@@ -15,6 +15,9 @@
     },
     "author": "Chelsea Apps",
     "license": "ISC",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },      
     "dependencies": {
         "@nestjsplus/dyn-schematics": "^1.0.12"
     },
