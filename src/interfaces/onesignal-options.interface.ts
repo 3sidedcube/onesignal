@@ -1,15 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface OnesignalOptions {
-    //
-    // This interface describes the options you want to pass to
-    // OnesignalModule.
-    //
-    // For example, if you are wrapping a database library like MassiveJS,
-    // this interface would probably contain properties like:
-    //
-    // user: string;
-    // password: string;
-    // port: number;
-    // host: string;
-    // database: string;
+    /**
+     * Onesignal App ID
+     */
+    appId: string;
+
+    /**
+     * Onesignal API Key
+     */
+    apiKey: string;
 }

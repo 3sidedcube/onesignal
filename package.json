@@ -17,9 +17,10 @@
     "license": "ISC",
     "publishConfig": {
         "registry": "https://npm.pkg.github.com"
-    },      
+    },
     "dependencies": {
-        "@nestjsplus/dyn-schematics": "^1.0.12"
+        "@nestjsplus/dyn-schematics": "^1.0.12",
+        "onesignal-node": "^3.3.0"
     },
     "devDependencies": {
         "@types/node": "^15.0.2",

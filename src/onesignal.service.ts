@@ -1,39 +1,45 @@
 // tslint:disable: variable-name
 import { Injectable, Inject, Logger } from '@nestjs/common';
+import { Client as OnesignalClient } from 'onesignal-node';
 import { ONESIGNAL_OPTIONS } from './constants';
 import { OnesignalOptions } from './interfaces';
+import { IMessage } from './interfaces/message.interface';
 
-/**
- * Sample interface for OnesignalService
- *
- * Customize this as needed to describe the OnesignalService
- *
- */
 interface IOnesignalService {
-    test(): Promise<any>
+    send(to: string[], payload: IMessage): Promise<any>;
 }
 
 @Injectable()
-/**
- *  You can remove the dependencies on the Logger if you don't need it.  You can also
- *  remove the `async test()` method.
- *
- *  The only thing you need to leave intact is the `@Inject(ONESIGNAL_OPTIONS) private _onesignalOptions`.
- *
- *  That injected dependency gives you access to the options passed in to
- *  OnesignalService.
- *
- */
 export class OnesignalService implements IOnesignalService {
-    private readonly logger: Logger
-    constructor(
-        @Inject(ONESIGNAL_OPTIONS) private _OnesignalOptions: OnesignalOptions,
-    ) {
-        this.logger = new Logger('OnesignalService');
-        this.logger.log(`Options: ${JSON.stringify(this._OnesignalOptions)}`);
+    private readonly logger: Logger;
+
+    private client: OnesignalClient;
+
+    constructor(@Inject(ONESIGNAL_OPTIONS) private _OnesignalOptions: OnesignalOptions) {
+        this.logger = new Logger(OnesignalService.name);
+
+        this.client = new OnesignalClient(_OnesignalOptions.appId, _OnesignalOptions.apiKey);
     }
 
-    async test(): Promise<any> {
-        return 'Hello from OnesignalModule!';
+    async send(to: string[], payload: IMessage): Promise<any> {
+        this.client.createNotification({
+            include_external_user_ids: to,
+            channel_for_external_user_ids: 'push',
+            thread_id: payload.threadId,
+            android_group: payload.threadId,
+            ios_badgeCount: 1,
+            ios_badgeType: 'Increase',
+            headings: {
+                en: payload.title,
+            },
+            subtitle: {
+                en: payload.subtitle,
+            },
+            contents: {
+                en: payload.message,
+            },
+            url: payload.url,
+            data: payload.payload,
+        });
     }
 }
