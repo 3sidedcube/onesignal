@@ -15,12 +15,17 @@ export class OnesignalService implements IOnesignalService {
 
     private client: OnesignalClient;
 
-    constructor(@Inject(ONESIGNAL_OPTIONS) private _OnesignalOptions: OnesignalOptions) {
+    constructor(@Inject(ONESIGNAL_OPTIONS) _OnesignalOptions: OnesignalOptions) {
         this.logger = new Logger(OnesignalService.name);
 
         this.client = new OnesignalClient(_OnesignalOptions.appId, _OnesignalOptions.apiKey);
     }
 
+    /**
+     * Send a push notification to a set of devices
+     * @param to User IDs to send to (must be registered via the frontend SDK)
+     * @param payload Notification details
+     */
     async send(to: string[], payload: IMessage): Promise<any> {
         this.client.createNotification({
             include_external_user_ids: to,
